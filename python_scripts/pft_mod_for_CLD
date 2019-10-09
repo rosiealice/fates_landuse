@@ -1,0 +1,10 @@
+
+filein=fates_params_default.nc
+python FatesPFTIndexSwapper.py --pft-indices=6,6 --fin $filein --fout fates_cld_tmp.nc
+
+$filein  = fates_cld_tmp.nc
+$fileout = fates_cld_phenmin.nc
+
+python modify_fates_paramfile.py --fin $filein --fout $fileout --O --var fates_phen_mindayson --val 90 --PFT 1
+$filein= $fileout
+python modify_fates_paramfile.py --fin $filein --fout $fileout --O --var fates_phen_mindayson --val 90 --PFT 2
